@@ -21,6 +21,8 @@ const list = new DoublyLinkedList(node1, node2, node3);
 
 list.dumpList();
 
+console.log(list.nodeAt(2));
+/*
 const node4 = new Node("R");
 
 //list.insertBeforeNode(node4, node3);
@@ -28,6 +30,12 @@ list.insertAfterNode(node4, node3);
 
 //list.removeNode(node1);
 list.dumpList();
+*/
+
+/*
+list.swapNodes(node3,node1);
+list.dumpList();
+*/
 
 /*
 //addNodeLast test

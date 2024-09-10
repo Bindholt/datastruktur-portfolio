@@ -121,12 +121,39 @@ export default class DoublyLinkedList {
         }
     }
 
+    swapNodes(node1, node2) {
+        const dataNode1 = node1.data
+        node1.data = node2.data;
+        node2.data = dataNode1;
+    }
+
+    size() {
+        let length = 0;
+        let node = this.head;
+        while (!!node) {
+            length++;
+            node = node.next;
+        }
+
+        return length;
+    }
+
+    nodeAt(index) {
+        let node = this.head;
+        for (let i = 0; i < index; i++) {
+            if(node == null) return;
+            node = node.next;
+        }
+
+        return node;
+    }
+
     dumpList() {
         let node = this.head;
-        let listDump = (!!node) ? node.data : "Nothing to see here!" 
+        let listDump = (!!node) ? `Data: ${node.data}, prev: ${(node.prev) ? node.prev.data : ""}, next: ${(node.next) ? node.next.data : ""}\n` : "Nothing to see here!" 
         while(!!node) {
             if (node != this.head) {
-                listDump += " <-> " + node.data;    
+                listDump += `Data: ${node.data}, prev: ${(node.prev) ? node.prev.data : ""}, next: ${(node.next) ? node.next.data : ""}\n`
             }
             node = node.next;
         }
