@@ -98,6 +98,73 @@ export default class DoublyLinkedList {
         }
         nodeBefore.next = nodeNew;
     }
+
+    insertAfter(index, data) {
+        const node = new Node(data);
+        const nodeBefore = this.nodeAt(index);
+        if(!!nodeBefore) {
+            this.insertAfterNode(node, nodeBefore);
+        }
+    }
+
+    insertBefore(index, data) {
+        const node = new Node(data);
+        const nodeAfter = this.nodeAt(index);
+        if(!!nodeAfter) {
+            this.insertBeforeNode(node, nodeAfter);
+        }
+    }
+    
+    first() {
+        return this.head.data;
+    }
+
+    last() {
+        return this.tail.data;
+    }
+
+    remove(data) {
+        let node = this.head;
+        while(!!node) {
+            if(node.data === data) {
+                this.removeNode(node);
+                return true;
+            }
+            node = node.next;
+        }
+
+        return false;
+    }
+
+    removeIndex(index) {
+        let node = this.nodeAt(index);
+        if(!!node) {
+            this.removeNode(node);
+            return true;
+        }
+
+        return false;
+    }
+
+    removeFirst() {
+        if (this.head === this.tail) {
+            this.clear();
+            return;
+        }
+
+        this.head = this.head.next;
+        this.head.prev = null;
+    }
+
+    removeLast() {
+        if (this.head === this.tail) {
+            this.clear();
+            return;
+        }
+
+        this.tail = this.tail.prev;
+        this.tail.next = null;
+    }
     
     resetList() {
         this.head = null;
@@ -146,6 +213,25 @@ export default class DoublyLinkedList {
         }
 
         return node;
+    }
+
+    get(index) {
+        const node = this.nodeAt(index);
+        return node.data;
+    }
+
+    indexOf(data) {
+        let index = 0;
+        let node = this.head;
+        while (!!node) {
+            if (node.data === data) {
+                return index;
+            }
+            index++;
+            node = node.next;
+        }
+
+        return -1;
     }
 
     dumpList() {

@@ -21,7 +21,7 @@ const list = new DoublyLinkedList(node1, node2, node3);
 
 list.dumpList();
 
-console.log(list.nodeAt(2));
+console.log(list.indexOf(node3.data));
 /*
 const node4 = new Node("R");
 
