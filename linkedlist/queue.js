@@ -1,6 +1,7 @@
 export default class SinglyLinkedList {
     head = null;
     tail = null;
+    size = 0;
 
     constructor(nodes){
         if(!!nodes) {
@@ -19,27 +20,21 @@ export default class SinglyLinkedList {
             this.tail.next = node;
             this.tail = node;
         }
+        size++;
     }
 
-    getFirstNode() {
-        return this.head;
+    getHead() {
+        return this.head?.data;
     }
 
-    getNextNode(node) {
-        return node.next;
-    }
-
-    setFirstNode(node) {
-        this.head = node;
-    }
-
-    removeFirstNode() {
+    removeHead() {
         if(!!this.head) {
             this.head = this.head.next;
         }
+        size--;
     }
 
-    getLastNode() {
+    getTail() {
         return this.tail;
     }
 

@@ -38,7 +38,7 @@ export default class DoublyLinkedList {
         const removed = this.tail.data;
 
         if (this.head === this.tail) {
-            this.resetList();
+            this.clear();
         } else {
             this.tail = this.tail.prev;
             this.tail.next = null;
@@ -70,7 +70,7 @@ export default class DoublyLinkedList {
         const removed = this.head.data;
 
         if(this.head === this.tail) {
-            this.resetList();
+            this.clear();
         } else {
             this.head = this.head.next;
             this.head.prev = null;
@@ -166,7 +166,7 @@ export default class DoublyLinkedList {
         this.tail.next = null;
     }
     
-    resetList() {
+    clear() {
         this.head = null;
         this.tail = null;
     }
