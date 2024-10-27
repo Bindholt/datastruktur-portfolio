@@ -15,6 +15,9 @@ export default class Stack {
     }
 
     pop() {
+        if(!this.head) {
+            return null;
+        }
         const node = this.head;
         this.head = this.head.next;
         return node;
@@ -24,7 +27,6 @@ export default class Stack {
         return this.head;
     }
 
-
     clear() {
         this.head = null;
     }
@@ -33,10 +35,12 @@ export default class Stack {
     dumpList(){
         if(this.head) {
             let current = this.head;
+            let dump = "";
             while(current) {
-                console.log(current.data);
+                dump += current.data + " ";
                 current = current.next;
             }
+            return dump;
         }
     }
 }
