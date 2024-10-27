@@ -1,7 +1,7 @@
-export default class SinglyLinkedList {
-    head = null;
-    tail = null;
-    size = 0;
+export default class Queue {
+    _head = null;
+    _tail = null;
+    _size = 0;
 
     constructor(nodes){
         if(!!nodes) {
@@ -13,50 +13,45 @@ export default class SinglyLinkedList {
 
     add(data) {
         const node = new Node(data, null);
-        if(!this.head) {
-            this.head = node;
-            this.tail = node;
+        if(!this._head) {
+            this._head = node;
+            this._tail = node;
         } else {
-            this.tail.next = node;
-            this.tail = node;
+            this._tail.next = node;
+            this._tail = node;
         }
-        size++;
+        this._size++;
     }
 
     getHead() {
-        return this.head?.data;
+        return this._head;
     }
 
     removeHead() {
-        if(!!this.head) {
-            this.head = this.head.next;
+        if(!!this._head) {
+            this._head = this._head.next;
         }
-        size--;
+        this._size--;
     }
 
     getTail() {
-        return this.tail;
+        return this._tail;
     }
 
     size() {
-        let current = this.head;
-        let count = 0;
-        
-        while(!!current) {
-            count++;
-            current = current.next;
-        }
-        return count;
+        return this._size;
     }
 
     clear() {
-        this.head = null;
+        this._head = null;
+        this._tail = null;
+        this._size = 0;
     }
 
 
     dumpList(){
-        if(this.head) {
-            let current = this.head;
+        if(this._head) {
+            let current = this._head;
             while(current) {
                 console.log(current.data);
                 current = current.next;
