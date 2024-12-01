@@ -19,3 +19,5 @@ function push(data){
 function pop(){
     return stack[--pointer];
 }
+
+console.log(llStack.getSize());

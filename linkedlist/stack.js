@@ -1,5 +1,6 @@
 export default class Stack {
     head = null;
+    size = 0;
 
     constructor(){
 
@@ -12,6 +13,7 @@ export default class Stack {
         }
 
         this.head = node;
+        this.size++;
     }
 
     pop() {
@@ -20,7 +22,12 @@ export default class Stack {
         }
         const node = this.head;
         this.head = this.head.next;
-        return node;
+        this.size--;
+        return node.data;
+    }
+
+    getSize() {
+        return this.size;
     }
 
     peek() {
@@ -29,6 +36,7 @@ export default class Stack {
 
     clear() {
         this.head = null;
+        this.size = 0;
     }
 
 
